@@ -1,11 +1,9 @@
 import React, { useContext, useState } from 'react'
-// import { v4 as uuidv4 } from 'uuid'
-// import { getDefaultTodayDate } from '../functions/handleDate'
 import { SaveAsJson } from './SaveAsJson'
-import { GlobalContext } from '../context/GlobalState'
+import { CropsContext } from '../context/CropsContext'
 
 export const AddCrops = () => {
-    const { addCrops, cropsHarvested } = useContext(GlobalContext)
+    const { cropsHarvested, addCrops } = useContext(CropsContext)
 
     const [symbol, setSymbol] = useState('')
     const [amount, setAmount] = useState(0)
@@ -13,13 +11,12 @@ export const AddCrops = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addCrops({
-            // id: uuidv4(),
-            // datetime: getDefaultTodayDate(),
+        const newCrops = {
             symbol,
             amount: +amount, // '+' sign to enter a number
             description
-        })
+        }
+        addCrops(newCrops)
     }
 
 

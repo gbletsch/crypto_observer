@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import coinList from '../data/coinList.json' // from coingecko
 
-import { GlobalContext } from '../context/GlobalState'
+//import { GlobalContext } from '../context/GlobalState'
+import { BalanceContext } from '../context/BalanceContext'
+
 import { findLastEntries } from '../functions/handleDate'
 
 // https://www.coingecko.com/pt/api/documentation
@@ -9,11 +11,12 @@ import { findLastEntries } from '../functions/handleDate'
 // const coinData = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=300&page=1&sparkline=false&price_change_percentage=1h%2C24h%2C7d%2C14d%2C30d%2C200d%2C1y'
 
 export const Balance = () => {
-    const { dailyBalance } = useContext(GlobalContext)
+    const { dailyBalance, loadingBalance } = useContext(BalanceContext)
+
     const [usdPrice, setUsdPrice] = useState(0)
     const [brlPrice, setBrlPrice] = useState(0)
     const [btcPrice, setBtcPrice] = useState(0)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true) // tirar essa merda qdo arrumar os contexts
 
     useEffect(() => {
         const lastBal = findLastEntries(dailyBalance)[0]
@@ -57,7 +60,7 @@ export const Balance = () => {
     }, [dailyBalance])
 
 
-    if (loading) {
+    if (loadingBalance || loading) {
         return <h1>Loading...</h1>
     }
 

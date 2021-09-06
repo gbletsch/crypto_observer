@@ -2,13 +2,18 @@ import React, { useContext, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { findLastEntries } from '../functions/handleDate'
 
-import { GlobalContext } from '../context/GlobalState'
+// import { GlobalContext } from '../context/GlobalState'
+import { BalanceContext } from '../context/BalanceContext'
+import { CropsContext } from '../context/CropsContext'
 
 export const CoinsCrops = () => {
-    const { dailyBalance, cropsHarvested } = useContext(GlobalContext)
-    const [cropsArray, setCropsArray] = useState({})
-    const [balArray, setBalArray] = useState({})
-    const [loading, setLoading] = useState(true)
+    const { dailyBalance, loadingBalance } = useContext(BalanceContext)
+    const { cropsHarvested, loadingCrops } = useContext(CropsContext)
+
+    //    const { dailyBalance, cropsHarvested } = useContext(GlobalContext)
+    const [cropsArray, setCropsArray] = useState([])
+    const [balArray, setBalArray] = useState([])
+    // const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const lastBal = findLastEntries(dailyBalance)[0]
@@ -45,10 +50,10 @@ export const CoinsCrops = () => {
             }
         }
         setBalArray(tempBalArray)
-        setLoading(false)
+        // setLoading(false)
     }, [dailyBalance, cropsHarvested])
 
-    if (loading) {
+    if (loadingCrops || loadingBalance) {
         return <h1>Loading...</h1>
     }
 

@@ -1,46 +1,37 @@
 import React, { useContext, useState } from 'react'
 import client from '../axios'
+import { UserContext } from '../context/UserContext'
 import { useHistory } from 'react-router-dom'
-import UserContext from '../context/User'
-
-const loginUser = async (credentials) => {
-    try {
-        const config = {
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }
-        const response = await client.post('login', credentials, config)
-        return response.data
-
-    } catch (error) {
-        console.log(error)
-    }
-}
 
 export const Login = () => {
+    const { setUser } = useContext(UserContext)
     const history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const user = useContext(UserContext)
-
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const data = await loginUser({
-            email,
-            password
-        })
 
-        if (!data.success) {
+        client.post('login', { email, password })
+            .then(response => {
+                if (!response.data.success) {
+                    alert('unauthorized')
+                    history.push('/login')
+                } else {
+                    setUser(response.data.data)
+                    history.push('/')
+                }
+            })
+            .catch(error => console.log(error))
+
+        /*if (!data.success) {
             alert('Ops, wrong credentials')
             return
         }
 
         user.setEmail(data.user.email)
 
-        localStorage.setItem('token', 'Bearer ' + data.token)
+        localStorage.setItem('token', 'Bearer ' + data.token)*/
         history.push('/')
     }
 

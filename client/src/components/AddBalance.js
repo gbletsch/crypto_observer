@@ -3,10 +3,10 @@ import React, { useContext, useState } from 'react'
 // import { getDefaultTodayDate } from '../functions/handleDate'
 import { SaveAsJson } from './SaveAsJson'
 
-import { GlobalContext } from '../context/GlobalState'
+import { BalanceContext } from '../context/BalanceContext'
 
 export const AddBalance = () => {
-    const { addBalance, dailyBalance } = useContext(GlobalContext)
+    const { addBalance, dailyBalance } = useContext(BalanceContext)
 
     const [symbol, setSymbol] = useState('')
     const [amount, setAmount] = useState(0)

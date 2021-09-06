@@ -1,18 +1,14 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 
-import { GlobalContext } from '../context/GlobalState'
+import { CropsContext } from '../context/CropsContext'
+
 import { EachCrops } from './EachCrops'
 import { findLastEntries } from '../functions/handleDate'
 
 export const CropsList = () => {
-    const { cropsHarvested, getCrops, cropsLoading } = useContext(GlobalContext)
+    const { cropsHarvested, loadingCrops } = useContext(CropsContext)
 
-    useEffect(() => {
-        getCrops()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    if (cropsLoading) {
+    if (loadingCrops) {
         return <h1>Loading...</h1>
     }
 

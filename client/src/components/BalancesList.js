@@ -1,18 +1,13 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { EachBalance } from './EachBalance'
 import { findLastEntries } from '../functions/handleDate'
 
-import { GlobalContext } from '../context/GlobalState'
+import { BalanceContext } from '../context/BalanceContext'
 
 export const BalancesList = () => {
-    const { dailyBalance, getBalance, balanceLoading } = useContext(GlobalContext)
+    const { dailyBalance, loadingBalance } = useContext(BalanceContext)
 
-    useEffect(() => {
-        getBalance()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    if (balanceLoading) (
+    if (loadingBalance) (
         <h1>Loading...</h1>
     )
 

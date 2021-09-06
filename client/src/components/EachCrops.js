@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { handleDate } from '../functions/handleDate'
 
-import { GlobalContext } from '../context/GlobalState'
+import { CropsContext } from '../context/CropsContext'
 
 export const EachCrops = ({ crops }) => {
-    const { deleteCrops } = useContext(GlobalContext)
+    const { deleteCrops } = useContext(CropsContext)
 
     return (
         <li className="balance_item__item">

@@ -69,34 +69,40 @@ async function register(req, res, next) {
 // @desc get user from cookie token
 // @route GET /api/v1/user
 // @access logged users
-async function getUser(req, res, next) {
-    try {
-        const token = req.cookies.token
-        if (!token) {
-            return res.json({
-                success: false,
-                error: 'do not have token'
-            })
-        }
+function getUser(req, res, next) {
+    const token = req.cookies.token
 
-        const payload = jwt.verify(token, process.env.JWT_KEY)
-
-        const user = await User.findById(payload.id)
-
+    if (!token) {
         return res.json({
-            success: true,
-            user: { email: user.email }
+            success: false,
+            error: 'do not have token'
         })
-
-    } catch (error) {
-        console.log('Error on getUser'.red, error)
-        return res
-            .status(500)
-            .json({
-                success: false,
-                error: 'server error'
-            })
     }
+
+    const payload = jwt.verify(token, process.env.JWT_KEY)
+
+    User.findById(payload.id)
+        .then(user => {
+            if (!user) {
+                return res.json({
+                    success: false,
+                    error: 'user not found'
+                })
+            }
+            return res.json({
+                success: true,
+                user: { email: user.email }
+            })
+        })
+        .catch(error => {
+            console.log('Error on getUser', error)
+            return res
+                .status(500)
+                .json({
+                    success: false,
+                    error: 'server error'
+                })
+        })
 }
 
 // @desc login user

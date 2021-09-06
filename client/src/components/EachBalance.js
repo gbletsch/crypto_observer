@@ -1,10 +1,9 @@
 import React, { useContext } from 'react'
 import { handleDate } from '../functions/handleDate'
-
-import { GlobalContext } from '../context/GlobalState'
+import { BalanceContext } from '../context/BalanceContext'
 
 export const EachBalance = ({ balance }) => {
-    const { deleteBalance } = useContext(GlobalContext)
+    const { deleteBalance } = useContext(BalanceContext)
     return (
         <li className="balance_item__item">
             <span className="balance_item__item__span">{handleDate(balance.createdAt)}</span>

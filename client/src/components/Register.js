@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import client from '../axios'
 import { useHistory } from 'react-router-dom'
-import UserContext from '../context/User'
+import { UserContext } from '../context/UserContext'
 
 const registerUser = async (credentials) => {
     try {
@@ -24,7 +24,7 @@ export const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()

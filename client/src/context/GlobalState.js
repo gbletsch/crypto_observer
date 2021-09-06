@@ -28,7 +28,7 @@ export const GlobalProvider = ({ children }) => {
     }, [state])*/
 
     // actions
-    const getBalance = async () => {
+    /*const getBalance = async () => {
         try {
             const token = localStorage.getItem('crypto-observer-token')
             const bal = await client.get('balance', {
@@ -47,24 +47,8 @@ export const GlobalProvider = ({ children }) => {
             })
         }
     }
-
-    const getCrops = async () => {
-        try {
-            const cr = await client.get('crops')
-
-            dispatch({
-                type: 'GET_CROPS',
-                payload: cr.data.data
-            })
-        } catch (error) {
-            dispatch({
-                type: 'CROPS_ERROR',
-                payload: error //.response.data.error
-            })
-        }
-    }
-
-    const deleteBalance = async (id) => {
+    
+        const deleteBalance = async (id) => {
         try {
             await client.delete(`balance/${id}`)
 
@@ -97,6 +81,24 @@ export const GlobalProvider = ({ children }) => {
             })
         }
     }
+*/
+
+    const getCrops = async () => {
+        try {
+            const cr = await client.get('crops')
+
+            dispatch({
+                type: 'GET_CROPS',
+                payload: cr.data.data
+            })
+        } catch (error) {
+            dispatch({
+                type: 'CROPS_ERROR',
+                payload: error //.response.data.error
+            })
+        }
+    }
+
 
     const deleteCrops = async (id) => {
         try {
@@ -135,14 +137,14 @@ export const GlobalProvider = ({ children }) => {
     return (
         <GlobalContext.Provider
             value={{
-                dailyBalance: state.dailyBalance,
+                // dailyBalance: state.dailyBalance,
                 cropsHarvested: state.cropsHarvested,
                 error: state.error,
-                balanceLoading: state.balanceLoading,
+                // balanceLoading: state.balanceLoading,
                 cropsLoading: state.cropsLoading,
-                getBalance,
-                deleteBalance,
-                addBalance,
+                // getBalance,
+                // deleteBalance,
+                // addBalance,
                 getCrops,
                 deleteCrops,
                 addCrops
