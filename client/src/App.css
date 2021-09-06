@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+:root {
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --color-text: black
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  margin: 0px auto;
+  padding: 0 .7rem;
+  width: 360px;
+  min-height: 100vh;
+}
+
+h1 {
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+h3 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+  margin: 40px 0 10px;
+}
+
+h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__link,
+.logout__button {
+  text-decoration: none;
+  color: var(--color-text);
+  transition: opacity .3s;
+}
+
+.logout__button {
+  border: 0;
+  background-color: transparent;
+  font-size: 1rem;
+}
+
+.header__link:hover {
+  opacity: .6;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.balance {
+  display: flex;
+  flex-direction: column;
+}
+
+.balance__title {
+  margin-bottom: .5rem;
+  border-bottom: solid 2px #bbb;
+}
+
+.balance__text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .2rem;
+  font-size: 1.4rem;
+}
+
+.coinscrops {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  padding: .8rem;
+  width: 100%;
+  min-width: 320px;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.coinscrops__title {
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.coinscrops__section {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 .5rem;
+}
+
+.coinscrops__section__left {
+  border-right: 1px solid #dedede;
+}
+
+.coinscrops__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: .1rem;
+  font-size: .8rem;
+}
+
+.money {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
+
+.add_balance__form__label,
+.login__form__label {
+  display: inline-block;
+  margin: .3rem 0;
+}
+
+.add_balance__form__input,
+.login__form__input {
+  border: 1px solid #dedede;
+  border-radius: 10px;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+}
+
+.add_balance__button,
+.save_as_json__button,
+.login__form__button {
+  cursor: pointer;
+  background-color: #9c88ff;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  display: block;
+  font-size: 16px;
+  margin: 10px 0 30px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.add_balance__button:focus,
+.save_as_json__button:focus
+.balance_item__delete_btn:focus,
+.login__form__button:focus {
+  outline: 0;
+}
+
+.balances_list__list,
+.coinscrops__list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.coinscrops__list {
+  margin-bottom: 0;
+}
+
+.balance_item__item {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.balance_item__item__span {
+  flex: 1;
+}
+
+.balance_item__item__span__last {
+  text-align: end;
+}
+
+.balance_item__item__span__center {
+  text-align: center;
+}
+
+/*
+.list li.plus {
+  border-right: 5px solid #2ecc71;
+}
+
+.list li.minus {
+  border-right: 5px solid #c0392b;
+}*/
+
+.balance_item__delete_btn {
+  cursor: pointer;
+  background-color: #e74c3c;
+  border: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.balance_item__item:hover .balance_item__delete_btn {
+  opacity: 1;
+}

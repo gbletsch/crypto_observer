@@ -1,0 +1,33 @@
+{
+  "name": "crypto-observer",
+  "version": "1.0.0",
+  "description": "Backend for crypto observer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server --trace-warnings",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "author": "GBL",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.2",
+    "morgan": "^1.10.0",
+    "react-router-dom": "^5.2.1",
+    "whatwg-url": "^9.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  }
+}
