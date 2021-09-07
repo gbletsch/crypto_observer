@@ -7,9 +7,6 @@ import { AddCrops } from './AddCrops'
 import { BalancesList } from './BalancesList'
 import { CropsList } from './CropsList'
 
-import BalanceContextProvider from '../context/BalanceContext'
-import CropsContextProvider from '../context/CropsContext'
-
 import { useHistory } from 'react-router-dom'
 
 import client from '../axios'
@@ -35,16 +32,12 @@ export const Dashboard = () => {
 
     return (
         <>
-            <BalanceContextProvider>
-                <CropsContextProvider>
-                    <Balance />
-                    <CoinsCrops />
-                    <AddBalance />
-                    <BalancesList />
-                    <AddCrops />
-                    <CropsList />
-                </CropsContextProvider>
-            </BalanceContextProvider>
+            <Balance />
+            <CoinsCrops />
+            <AddBalance />
+            <BalancesList />
+            <AddCrops />
+            <CropsList />
         </>
     )
 }
