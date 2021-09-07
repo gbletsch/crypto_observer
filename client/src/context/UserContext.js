@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
-import client from '../axios'
+import { client } from '../axios'
 
 export const UserContext = createContext()
 

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import client from '../axios'
+import { client } from '../axios'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 
@@ -43,10 +43,6 @@ export const Register = () => {
         localStorage.setItem('token', 'Bearer ' + data.token)
         history.push('/')
     }
-
-    /*return (
-        <h1>Hello, world!!!</h1>
-    )*/
 
     return (
         <div className='login'>

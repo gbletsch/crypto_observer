@@ -9,7 +9,7 @@ import { CropsList } from './CropsList'
 
 import { useHistory } from 'react-router-dom'
 
-import client from '../axios'
+import { client } from '../axios'
 
 export const Dashboard = () => {
     const history = useHistory()

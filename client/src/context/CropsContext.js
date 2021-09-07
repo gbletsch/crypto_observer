@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-import client from '../axios'
+import { client } from '../axios'
 
 export const CropsContext = createContext()
 
