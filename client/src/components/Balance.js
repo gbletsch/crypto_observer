@@ -25,15 +25,24 @@ export const Balance = () => {
       dict[e.symbol] = e.id;
     });
     dict["usd"] = "dolar";
+    dict["matic"] = "matic";
+    dict["crv"] = "crv";
+
+    // console.log(priceData);
 
     let totalUsd = 0;
     let totalBrl = 0;
     let totalBtc = 0;
     lastBal.forEach((e) => {
+      console.log(e);
+      // console.log(priceData[dict[e.symbol.toLowerCase()]]);
+      const code = dict[e.symbol]; //.toLowerCase()];
       totalUsd += e.amount * priceData[dict[e.symbol.toLowerCase()]]?.usd;
+      console.log(e.amount, code, priceData[code]?.usd);
       totalBrl += e.amount * priceData[dict[e.symbol.toLowerCase()]]?.brl;
       totalBtc += e.amount * priceData[dict[e.symbol.toLowerCase()]]?.btc;
     });
+    console.log(totalUsd);
     setUsdPrice(totalUsd);
     setBrlPrice(totalBrl);
     setBtcPrice(totalBtc);
